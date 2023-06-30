@@ -1,0 +1,11 @@
+import subprocess
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def home(request):
+    return render(request, 'home.html')
+
+def result(request):
+    code = request.POST['code']
+    result = subprocess.check_output(['python', 'run.py', code], universal_newlines=True)
+    return render(request, 'result.html', {'result': result})

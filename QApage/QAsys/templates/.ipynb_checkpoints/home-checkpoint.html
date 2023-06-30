@@ -1,0 +1,24 @@
+{% include 'base.html' %}
+<!-- {% include 'result.html' %} -->
+<!-- {% include 'answer.html' %} -->
+
+{% block content %}
+<h1>파이썬 코드를 입력해 주세요:</h1>
+
+<form action="{% url 'result' %}" method="post">
+  {% csrf_token %}
+  <textarea name="code" cols="80" rows="10"></textarea>
+  <br>
+  <input type="submit" value="코드 확인하기">
+</form>
+
+<h1>질문은 여기에 입력해 주세요:</h1>
+
+<form action="{% url 'answer' %}" method="post">
+  {% csrf_token %}
+  <textarea name="answer" cols="80" rows="10"></textarea>
+  <br>
+  <input type="submit" value="답변 확인하기">
+</form>
+
+{% endblock %}
